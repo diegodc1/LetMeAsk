@@ -6,7 +6,7 @@
     aside {
         flex: 7;
 
-        background: #835afd;
+        background: #3E00FF;
         color: #FFFFFF;
 
         display: flex;
@@ -55,9 +55,9 @@
             align-self: center;
         }
 
-        h2{
-            font-size: 24px;
-            margin: 64px 0 24px;
+        > h2{
+            font-size: 22px;
+            margin: 64px 0 12px;
 
             font-family: 'Poppins', sans-serif;
         }
@@ -72,7 +72,7 @@
             }
 
             button{
-                margin-top: 16px;
+                margin-top: 12px;
             }
 
             button, input{
@@ -91,9 +91,28 @@
 
         }
     }
+    
+    .enter-room-title {
+        h2{
+            font-size: 22px;
+            margin: 20px 0 12px;
+
+            font-family: 'Poppins', sans-serif;
+        }
+    }
+
+    .title-home{
+        h2{
+            font-size: 24px;
+            margin: 0px 0 0px;
+            margin-top: 40px;
+
+            font-family: 'Poppins', sans-serif;
+        }
+    }
 
     .create-room{
-        margin-top: 64px;
+        margin-top: 50px;
         height: 50px;
         border-radius: 8px;
         font-weight: 500;
@@ -118,11 +137,40 @@
         }
     }
 
+    .separator-home {
+        font-size: 15px;
+        color: #a8a8b3;
+
+        margin: 0px 0;
+        margin-bottom: 28px;
+        margin-top: 50px;
+        display: flex;
+        align-items: center;
+
+        &::before{
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #a8a8b3;
+            margin-right: 16px;
+        }
+
+        &::after{
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #a8a8b3; 
+            margin-left: 16px;
+        }
+    }
+
     .separator {
         font-size: 14px;
         color: #a8a8b3;
 
-        margin: 32px 0;
+        margin: 0px 0;
+        margin-bottom: 28px;
+        margin-top: 50px;
         display: flex;
         align-items: center;
 

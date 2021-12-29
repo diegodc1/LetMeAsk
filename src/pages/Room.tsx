@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react';
+import { useHistory } from 'react-router-dom'
 import { Link, useParams } from 'react-router-dom'
 
 import logoImg from '../assets/images/logo.svg';
@@ -18,12 +19,23 @@ type RoomParams = {
 }
 
 export function Room() {
-  const { user } = useAuth();
+  const { user, signInWithGoogle } = useAuth();
   const params = useParams<RoomParams>();
   const [newQuestion, setNewQuestion] = useState('');
   const roomId = params.id;
+  const history = useHistory();
+  
 
   const { title, questions } = useRoom(roomId)
+
+  async function authGoogle() {
+    if (!user) {
+      await signInWithGoogle()
+    }
+
+    history.push('/rooms/-Ms6MV4Li__PiGDRJ5mx');
+  }
+
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
@@ -65,7 +77,9 @@ export function Room() {
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask" />
+          <a href="/">
+            <img src={logoImg} alt="Letmeask logo"/>         
+          </a>
           <RoomCode code={roomId} />
         </div>
       </header>
@@ -90,7 +104,7 @@ export function Room() {
                 <span>{user.name}</span>
               </div>
             ) : (
-              <span>Para enviar uma pergunta, </span>
+              <span>Para enviar uma pergunta, <Link to={'/'}>faça seu login</Link>  </span>
             ) }
             <Button type="submit" disabled={!user}>Enviar pergunta</Button>
           </div>

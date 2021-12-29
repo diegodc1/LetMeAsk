@@ -14,8 +14,6 @@ import { database } from '../services/firebase';
 
 import '../styles/room.scss';
 
-import toast, { Toaster } from 'react-hot-toast';
-
 type RoomParams = {
   id: string;
 }
@@ -25,7 +23,6 @@ export function AdminRoom() {
   const history = useHistory()
   const params = useParams<RoomParams>();
   const roomId = params.id;
-  const notify = () => toast.success('Successfully toasted!');
 
   const { title, questions } = useRoom(roomId)
 
@@ -62,7 +59,7 @@ export function AdminRoom() {
           <img src={logoImg} alt="Letmeask" />
           <div>
             <RoomCode code={roomId} />
-            <Button isOutlined onClick={notify}>Encerrar sala</Button>
+            <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
           </div>
         </div>
       </header>
@@ -113,3 +110,4 @@ export function AdminRoom() {
     </div>
   );
 }
+
