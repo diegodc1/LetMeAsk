@@ -37,6 +37,7 @@ export function AdminRoom() {
   async function handleDeleteQuestion(questionId: string) {
     if (window.confirm('Tem certeza que você deseja excluir esta pergunta?')) {
       await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
+
     }
   }
 
@@ -56,7 +57,9 @@ export function AdminRoom() {
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask" />
+          <a href="/">
+            <img src={logoImg} alt="Letmeask logo"/>         
+          </a>
           <div>
             <RoomCode code={roomId} />
             <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>
@@ -88,6 +91,7 @@ export function AdminRoom() {
                     >
                       <img src={checkImg} alt="Marcar pergunta como respondida" />
                     </button>
+
                     <button
                       type="button"
                       onClick={() => handleHighlightQuestion(question.id)}
@@ -96,6 +100,7 @@ export function AdminRoom() {
                     </button>
                   </>
                 )}
+
                 <button
                   type="button"
                   onClick={() => handleDeleteQuestion(question.id)}

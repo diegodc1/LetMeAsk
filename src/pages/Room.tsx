@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 
 import logoImg from '../assets/images/logo.svg';
 
-import { Button } from '../components/Button';
+import { ButtonQuestion, Button } from '../components/Button';
 import { Question } from '../components/Question';
 import { RoomCode } from '../components/RoomCode';
 import { useAuth } from '../hooks/useAuth';
@@ -106,7 +106,7 @@ export function Room() {
             ) : (
               <span>Para enviar uma pergunta, <Link to={'/'}>faça seu login</Link>  </span>
             ) }
-            <Button type="submit" disabled={!user}>Enviar pergunta</Button>
+            <ButtonQuestion type="submit" disabled={!user}>Enviar pergunta</ButtonQuestion>
           </div>
         </form>
 

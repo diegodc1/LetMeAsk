@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom'
 import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg';
 
-import { Button } from '../components/Button';
+import { ButtonQuestion, Button, ButtonNewRoom} from '../components/Button';
 import { database } from '../services/firebase';
 import { useAuth } from '../hooks/useAuth';
 
@@ -74,9 +74,9 @@ export function NewRoom() {
               onChange={event => setNewRoom(event.target.value)}
               value={newRoom}
             />
-            <Button type="submit">
+            <ButtonNewRoom type="submit">
               Criar sala
-            </Button>
+            </ButtonNewRoom>
           </form>
           <div className="separator">ou entre em uma sala</div>
           <div className="enter-room-title"><h2>Entrar em uma sala</h2></div>
