@@ -31,7 +31,7 @@ export function NewRoom() {
       authorId: user?.id,
     })
 
-    history.push(`/rooms/${firebaseRoom.key}`)
+    history.push(`/admin/rooms/${firebaseRoom.key}`)
   }
 
   async function handleJoinRoom(event: FormEvent) {
@@ -42,7 +42,6 @@ export function NewRoom() {
     }
 
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
-    
 
     if (!roomRef.exists()) {
       alert('Room not exist');
@@ -54,7 +53,7 @@ export function NewRoom() {
       return;
     }
 
-    history.push(`/rooms/${roomCode}`);
+    history.push(`/rooms/${roomCode}`)
   }
   return (
     <div id="page-auth">
