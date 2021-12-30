@@ -22,19 +22,8 @@
         background: #DBDCDD;
     }
 
-    .answered-phrase {
-        span {
-            margin-left: 8px;
-            color: #737380;
-            font-size: 14px;
-            font-weight: 500;
-          }
-        
-    }
-
     p {
         color: #29292e;
-        
     }
 
     footer {
@@ -73,15 +62,15 @@
 
             &.like-button {
                 display: flex;
-                align-items: flex;
+                align-items: flex-end;
                 color: #737380;
                 gap: 8px;
 
                 &.liked {
-                    color: #3E00FF;
+                    color: #835afd;
 
                     svg path {
-                        stroke: #3E00FF;
+                        stroke: #835afd;
                     }
                 }
             }

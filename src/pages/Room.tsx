@@ -1,10 +1,9 @@
 import { FormEvent, useState } from 'react';
-import { useHistory } from 'react-router-dom'
 import { Link, useParams } from 'react-router-dom'
 
 import logoImg from '../assets/images/logo.svg';
 
-import { ButtonQuestion, Button } from '../components/Button';
+import { Button } from '../components/Button';
 import { Question } from '../components/Question';
 import { RoomCode } from '../components/RoomCode';
 import { useAuth } from '../hooks/useAuth';
@@ -19,23 +18,12 @@ type RoomParams = {
 }
 
 export function Room() {
-  const { user, signInWithGoogle } = useAuth();
+  const { user } = useAuth();
   const params = useParams<RoomParams>();
   const [newQuestion, setNewQuestion] = useState('');
   const roomId = params.id;
-  const history = useHistory();
-  
 
   const { title, questions } = useRoom(roomId)
-
-  async function authGoogle() {
-    if (!user) {
-      await signInWithGoogle()
-    }
-
-    history.push('/rooms/-Ms6MV4Li__PiGDRJ5mx');
-  }
-
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
@@ -77,16 +65,14 @@ export function Room() {
     <div id="page-room">
       <header>
         <div className="content">
-          <a href="/">
-            <img src={logoImg} alt="Letmeask logo"/>         
-          </a>
+          <img src={logoImg} alt="Letmeask" />
           <RoomCode code={roomId} />
         </div>
       </header>
 
       <main>
         <div className="room-title">
-          <h1>{title}</h1>
+          <h1>Sala {title}</h1>
           { questions.length > 0 && <span>{questions.length} pergunta(s)</span> }
         </div>
 
@@ -104,9 +90,9 @@ export function Room() {
                 <span>{user.name}</span>
               </div>
             ) : (
-              <span>Para enviar uma pergunta, <Link to={'/'}>faça seu login</Link>  </span>
+              <span>Para enviar uma pergunta, </span>
             ) }
-            <ButtonQuestion type="submit" disabled={!user}>Enviar pergunta</ButtonQuestion>
+            <Button type="submit" disabled={!user}>Enviar pergunta</Button>
           </div>
         </form>
 
@@ -133,13 +119,6 @@ export function Room() {
                     </svg>
                   </button>
                 )}
-
-                <div className="answered-phrase">
-                  {question.isAnswered && 
-                    <span>Pergunta lida</span>
-                  }
-                </div>
-               
               </Question>
             );
           })}

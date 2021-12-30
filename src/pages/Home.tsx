@@ -11,17 +11,14 @@ import { Button } from '../components/Button';
 import { useAuth } from '../hooks/useAuth';
 
 import '../styles/auth.scss';
+import toast, { Toaster } from 'react-hot-toast';
 
-
-
-
+<div><Toaster/></div>
 
 export function Home() {
   const history = useHistory();
   const { user, signInWithGoogle } = useAuth()
   const [roomCode, setRoomCode] = useState('');
-
-
 
   async function handleCreateRoom() {
     if (!user) {
@@ -42,7 +39,7 @@ export function Home() {
     
 
     if (!roomRef.exists()) {
-      alert('Room not exist');
+      toast.success('Successfully toasted!')
       return;
     }
 
@@ -58,18 +55,17 @@ export function Home() {
     <div id="page-auth">
       <aside>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
-        <strong>Toda pergunta tem uma resposta.</strong>
+        <strong>Crie salas de Q&amp;A ao-vivo</strong>
         <p>Tire as dúvidas da sua audiência em tempo-real</p>
       </aside>
       <main>
         <div className="main-content">
           <img src={logoImg} alt="Letmeask" />
-          <div className="title-home"><h2> Crie ou entre em salas de Q&amp;A ao-vivo </h2> </div>
           <button onClick={handleCreateRoom} className="create-room">
             <img src={googleIconImg} alt="Logo do Google" />
-            Fazer login com Google
+            Crie sua sala com o Google
           </button>
-          <div className="separator-home">ou entre como convidado</div>
+          <div className="separator">ou entre em uma sala</div>
           <form onSubmit={handleJoinRoom}>
             <input 
               type="text"
@@ -78,10 +74,9 @@ export function Home() {
               value={roomCode}
             />
             <Button type="submit">
-              Entrar como convidado
+              Entrar na sala
             </Button>
           </form>
-          
         </div>
       </main>
     </div>
